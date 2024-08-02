@@ -1,6 +1,6 @@
 /**
  * @file PIXELS.h
- * @brief header file for PIXELS.c
+ * @brief header file for PIXELS.cpp
  * @author Aarjav Jain
  * @date 2024-07-29
  */
@@ -10,19 +10,19 @@
  *  
  *  Each Pixel on the strip contains <LEDS_PER_PIXEL> PIXELs.
  *      - Represented by a uint8_t array of size <LEDS_PER_PIXEL> for optimal memory usage.
- *      - Defined in PIXEL.c
+ *      - Defined in PIXELS.cpp
  *  
  *  The entire Pixel strip contains <NUM_PIXELS> Pixels.
  *      - Represented by a 2D uint8_t array of size <NUM_PIXELS> x <LEDS_PER_PIXEL>.
- *      - Defined in PIXEL.c
+ *      - Defined in PIXELS.cpp
  */
 
 
-#ifndef _PIXELS_H_
-#define _PIXELS_H_
+#ifndef _PIXELS_HPP_
+#define _PIXELS_HPP_
 
-#include "PWM.h"
-#include "CONSTANTS.h"
+#include "PWM.hpp"
+#include "CONSTANTS.hpp"
 #include <stdint.h>
 #include <stdbool.h>
 
@@ -49,4 +49,4 @@ void _set_pixel(uint16_t pixel_idx, uint8_t red,
                                     uint8_t blue
 );
 
-#endif /* _PIXELS_H_ */
+#endif /* _PIXELS_HPP_ */

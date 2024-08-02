@@ -1,13 +1,13 @@
 /**
- * @file CONSTANTS.h
+ * @file CONSTANTS.hpp
  * @brief This file contains general constants used in the project
  * @author Aarjav Jain
  * @date 2024-07-29
  */
 
 
-#ifndef _CONSTANTS_H_
-#define _CONSTANTS_H_
+#ifndef _CONSTANTS_HPP_
+#define _CONSTANTS_HPP_
 
 
 /*  ============== LED AND PIXEL STRIP CONSTANTS ============== */
@@ -21,4 +21,4 @@
 #define BLUE_IDX                2
 
 
-#endif /* _CONSTANTS_H_ */
+#endif /* _CONSTANTS_HPP_ */
