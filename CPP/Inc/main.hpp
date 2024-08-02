@@ -20,9 +20,9 @@
 
 /* ========== CONSTANTS ========== */
 #define AUDIO_BUFFER_SIZE           4096
-#define FFT_SIZE                    2048
+#define FFT_SIZE                    AUDIO_BUFFER_SIZE / 2
 #define START_OF_FIRST_HALF         0
-#define START_OF_SECOND_HALF        2048
+#define START_OF_SECOND_HALF        FFT_SIZE
 
 
 /*  ============== LED AND PIXEL STRIP CONSTANTS ============== */
