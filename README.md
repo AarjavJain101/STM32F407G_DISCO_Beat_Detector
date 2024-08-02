@@ -15,5 +15,6 @@ The goal of this project is to use the 2023 Beat Detector algorithm on an LED st
 * Unplug the USB cable from the board now.
 * Then connect the 5V and GND pins on the board to the red and white lines respectively on the WS2812B LED strip (this assumes you are using BTF lighting's model. If not refer to the LED strip data sheet for the correct power lines).
 * Connect pin `PE9` to green line on the LED strip (this is PWM out pin).
-* ADDD POINTS ABOUT MIC CONNECTIONS
+* Now to connect the SPH0645LM4H mic make the following connections
+    * 
 * Now, power the board either with the adjustable power supply or with the USB cable again and the LED strip is now sound reactive!

@@ -31,9 +31,7 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
-#include "PIXELS.h"
-
+#include <stdbool.h>
 
 /* USER CODE END Includes */
 
@@ -49,7 +47,8 @@ extern "C" {
 
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
-
+extern bool is_data_sent;
+extern TIM_HandleTypeDef htim1;
 /* USER CODE END EM */
 
 void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
@@ -58,7 +57,7 @@ void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
-
+void CppMain();
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/

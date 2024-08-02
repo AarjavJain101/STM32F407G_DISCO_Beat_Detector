@@ -1,6 +1,6 @@
 /**
- * @file PWM.h
- * @brief header file for PWM.c
+ * @file PWM.hpp
+ * @brief header file for PWM.cpp
  * @author Aarjav Jain
  * @date 2024-07-29
  */
@@ -15,10 +15,10 @@
  */
 
 
-#ifndef _PWM_H_
-#define _PWM_H_
+#ifndef _PWM_HPP_
+#define _PWM_HPP_
 
-#include "CONSTANTS.h"
+#include "CONSTANTS.hpp"
 #include <stdint.h>
 #include <stdbool.h>
 
@@ -43,4 +43,4 @@ void PWM_set_pwm_one_pixel(uint16_t pixel_idx, uint32_t rgb_val, uint8_t num_bit
 void _set_value_as_pwm(uint32_t pwm_data_idx, uint32_t value, uint8_t num_bits);
 
 
-#endif /* _PWM_H_ */
+#endif /* _PWM_HPP_ */

@@ -1,12 +1,12 @@
 /**
- * @file PWM.c
+ * @file PWM.cpp
  * @brief This file contains functions to interact with PWM and also initiliaze your PWM
  * @author Aarjav jain
  * @date 2024-07-29
  */
 
 
-#include "PWM.h"
+#include "PWM.hpp"
 
 
 /*  ============================ STATIC VARIABLE DEFINITIONS ============================ */

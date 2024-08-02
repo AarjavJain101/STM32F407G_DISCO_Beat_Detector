@@ -82,7 +82,7 @@ void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef* htim)
 {
     if (htim->Instance == TIM1) 
     {
-        HAL_TIM_PWM_Stop_DMA(&htim, TIM_CHANNEL_1);
+        HAL_TIM_PWM_Stop_DMA(htim, TIM_CHANNEL_1);
         is_data_sent = true;
     }
 }
@@ -132,21 +132,12 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  uint8_t red_val = 0;
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-
-      uint16_t* pwm_data = PIXELS_color_pixels(0, 10, red_val, 0, 0);
-
-      HAL_TIM_PWM_Start_DMA(&htim1, TIM_CHANNEL_1, (uint32_t *)pwm_data, BITS_PER_PIXEL * NUM_PIXELS + BITS_FOR_RESET);
-      while (!is_data_sent){};
-      is_data_sent = false;
-      red_val = ((red_val + 1) % 2) * 255;
-
-      HAL_Delay(50);
+	  CppMain();
   }
   /* USER CODE END 3 */
 }
@@ -490,7 +481,17 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+int _write(int file, char *ptr, int len)
+{
+  (void)file;
+  int DataIdx;
 
+  for (DataIdx = 0; DataIdx < len; DataIdx++)
+  {
+    ITM_SendChar(*ptr++);
+  }
+  return len;
+}
 /* USER CODE END 4 */
 
 /**

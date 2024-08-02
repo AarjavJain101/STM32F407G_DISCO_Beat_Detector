@@ -10,7 +10,7 @@
 // TODO: Check if having a pixel_strip array for fast getting is worth it
 
 
-#include "PIXELS.h"
+#include "PIXELS.hpp"
 
 
 /*  ============================ STATIC VARIABLE DEFINITIONS ============================ */
