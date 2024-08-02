@@ -18,10 +18,7 @@
 #ifndef _PWM_HPP_
 #define _PWM_HPP_
 
-#include "CONSTANTS.hpp"
-#include <stdint.h>
-#include <stdbool.h>
-
+#include "main.hpp"
 
 
 /* =================== TIMING/WIDTH CONSTANTS =================== */
@@ -37,10 +34,15 @@
 
 
 /* =================== PUBLIC FUNCTIONS DECLARATIONS =================== */
+
+/* PERSONAL FUNCTIONS */
 uint16_t* PWM_set_pwm_all_pixels(uint8_t pixel_strip[NUM_PIXELS][LEDS_PER_PIXEL]);
 void _set_reset_bits_pwm();
 void PWM_set_pwm_one_pixel(uint16_t pixel_idx, uint32_t rgb_val, uint8_t num_bits);
 void _set_value_as_pwm(uint32_t pwm_data_idx, uint32_t value, uint8_t num_bits);
+
+/* CALLBACKS */
+void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef* htim);
 
 
 #endif /* _PWM_HPP_ */

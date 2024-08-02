@@ -16,7 +16,35 @@
 
 /* MY INCLUDES */
 #include "DETECTOR.hpp"
-#include "PIXELS.hpp"
+#include <vector>
+
+/* ========== CONSTANTS ========== */
+#define AUDIO_BUFFER_SIZE           4096
+#define FFT_SIZE                    2048
+#define START_OF_FIRST_HALF         0
+#define START_OF_SECOND_HALF        2048
+
+
+/*  ============== LED AND PIXEL STRIP CONSTANTS ============== */
+#define SET_COLOR(r, g, b)      ((g << 16U) | (r << 8U) | b)              // ORDER IS G-R-B because of WS2812B
+
+#define NUM_PIXELS              10
+#define LEDS_PER_PIXEL          3               // RGB only in WS2812B
+
+#define GREEN_IDX               0
+#define RED_IDX                 1
+#define BLUE_IDX                2
+
+
+/* ========== EXTERNS ========== */
+extern bool is_data_sent;
+extern int16_t raw_audio_buffer[AUDIO_BUFFER_SIZE];
+extern volatile int16_t sample_i2s;
+extern bool isI2SBufferHalfDone;
+extern bool isI2SBufferDone;
+
+
+
 
 
 #endif /* INC_MAIN_HPP_ */

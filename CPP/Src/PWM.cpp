@@ -12,8 +12,6 @@
 /*  ============================ STATIC VARIABLE DEFINITIONS ============================ */
 
 uint16_t pwm_data[BITS_PER_PIXEL * NUM_PIXELS + BITS_FOR_RESET] = {0};
-static bool is_data_sent = false;
-
 
 
 /**
@@ -76,5 +74,19 @@ void _set_value_as_pwm(uint32_t pwm_data_idx, uint32_t value, uint8_t num_bits)
             pwm_data[pwm_data_idx + curr_bit] = PWM_T1H_WS2812B;
         else 
             pwm_data[pwm_data_idx + curr_bit] = PWM_T0H_WS2812B;
+    }
+}
+
+
+/**
+ * @brief Overriden callback function for when PWM pulse is finished
+ * @param htim: The timer handle
+ */
+void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef* htim) 
+{
+    if (htim->Instance == TIM1) 
+    {
+        HAL_TIM_PWM_Stop_DMA(htim, TIM_CHANNEL_1);
+        is_data_sent = true;
     }
 }

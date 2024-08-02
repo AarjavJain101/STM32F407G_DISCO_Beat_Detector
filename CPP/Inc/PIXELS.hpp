@@ -22,7 +22,7 @@
 #define _PIXELS_HPP_
 
 #include "PWM.hpp"
-#include "CONSTANTS.hpp"
+#include "main.hpp"
 #include <stdint.h>
 #include <stdbool.h>
 
