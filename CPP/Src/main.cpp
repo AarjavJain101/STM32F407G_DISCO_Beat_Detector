@@ -7,8 +7,13 @@
 
 #include "main.hpp"
 
+
 void CppMain()
 {
+	// Enable sound reading using DMA
+	HAL_I2S_Receive_DMA(&hi2s3, (uint16_t*) data_i2s, sizeof(data_i2s) / sizeof(data_i2s[0]));
+
+	// LED flashing
 	uint8_t red_val = 0;
 	while (1) {
       uint16_t* pwm_data = PIXELS_color_pixels(0, 10, red_val, 0, 0);
@@ -17,7 +22,7 @@ void CppMain()
       while (!is_data_sent){};
       is_data_sent = false;
       red_val = ((red_val + 1) % 2) * 255;
-      HAL_Delay(50);
+      HAL_Delay(500);
 	}
 }
 

@@ -32,6 +32,7 @@ extern "C" {
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stdbool.h>
+#include <stdint.h>
 
 /* USER CODE END Includes */
 
@@ -48,7 +49,10 @@ extern "C" {
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
 extern bool is_data_sent;
+extern int16_t data_i2s[100];
+extern volatile int16_t sample_i2s;
 extern TIM_HandleTypeDef htim1;
+extern I2S_HandleTypeDef hi2s3;
 /* USER CODE END EM */
 
 void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
