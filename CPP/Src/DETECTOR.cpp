@@ -18,6 +18,45 @@ vector<vector<float>> history_freqs = vector<vector<float>>();
 
 
 
+// /* =========== INITIALZE CALCULATION VARIABLES ===========*/
+
+// int chunks_processed = 0;               // Number of chunks processed
+
+// // Energy for each of 39 sub bands as a vector
+// vector<float> instant_energy;
+// instant_energy.resize(TOTAL_SUB_BANDS, 0);
+
+// // Energy history for HISTORY_SECONDS taken at RATE / CHUNK_SIZE times per second
+// vector<vector<float>> energy_history;
+
+// // Beat tracking variable for each sub band (true if there is a beat otherwise false)
+// vector<bool> sub_band_beat;
+// sub_band_beat.resize(TOTAL_SUB_BANDS, true);
+
+// // Beat history for successfully detected bass and claps and hihats
+// vector<vector<float>> beat_history;
+// for (int i = 0; i < 3; i++)
+// {
+//     beat_history.push_back({0});
+//     for (int j = 0; j < 3; j++)
+//     {
+//         beat_history[i].push_back(0);
+//     }
+// }
+
+// // Chunk/time trackers and energy for bass, claps, and hihats
+// int bass_chunk = 0;
+// int clap_chunk = 0;
+// float clap_energy = 0;
+// int hihat_chunk = 0;
+// float hihat_energy = 0;
+// int hihat_gap_mode = 0;
+// float hihat_gap_average = 0;
+// vector<int> hihat_gap_array;
+// hihat_gap_array.resize(35, 0);
+
+
+
 // vector<float> freqs = vector<float>(AUDIO_BUFFER_SIZE / 4);
 // uint16_t freqpoint = 0;
 // int offset = 150; 

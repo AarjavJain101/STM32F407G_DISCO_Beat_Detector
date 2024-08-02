@@ -23,6 +23,7 @@
 #define FFT_SIZE                    AUDIO_BUFFER_SIZE / 2
 #define START_OF_FIRST_HALF         0
 #define START_OF_SECOND_HALF        FFT_SIZE
+#define SAMPLE_RATE                 93750
 
 
 /*  ============== LED AND PIXEL STRIP CONSTANTS ============== */

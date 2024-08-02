@@ -16,7 +16,6 @@
 
  
 /* ========== CONSTANTS ========== */
-#define SAMPLE_RATE                 46875
 #define DO_INVERSE_FFT              1
 #define DO_FFT                      0
 
