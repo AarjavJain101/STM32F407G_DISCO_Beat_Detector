@@ -21,12 +21,12 @@ void CppMain()
 	// Enable sound reading using DMA
 	HAL_I2S_Receive_DMA(&hi2s3, (uint16_t*) raw_audio_buffer, sizeof(raw_audio_buffer) / sizeof(raw_audio_buffer[0]));
 
-      // Initiliaze FFT
-      DETECTOR_fft_init();
+      // Initiliaze FFT and variables for detection
+      DETECTOR_init();
 
 
 	// LED flashing
-	uint8_t red_val = 0;
+	uint8_t red_val = 0;    
 	while (1) {
             if (isI2SBufferHalfDone && !isI2SBufferDone)                                  // Audio buffer is 4096 but I do half at a time to avoid overwriting
             {

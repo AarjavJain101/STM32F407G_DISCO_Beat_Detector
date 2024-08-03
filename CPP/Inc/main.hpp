@@ -19,10 +19,13 @@
 #include <vector>
 
 /* ========== CONSTANTS ========== */
-#define AUDIO_BUFFER_SIZE           4096
+
+/* AUDIO Constants*/
+#define AUDIO_BUFFER_SIZE           8192
 #define FFT_SIZE                    AUDIO_BUFFER_SIZE / 2
 #define START_OF_FIRST_HALF         0
 #define START_OF_SECOND_HALF        FFT_SIZE
+#define NUM_FREQ_BINS               FFT_SIZE / 2
 #define SAMPLE_RATE                 93750
 
 
