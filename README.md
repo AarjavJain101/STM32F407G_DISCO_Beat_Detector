@@ -2,8 +2,8 @@
 The goal of this project is to use the 2023 Beat Detector algorithm on an LED strip (WS2812B) on any development board using the HAL API. The board of choice in my case is the STM32F407G-DISC Rev E01.
 
 ## Usage
-### Important aterials
-* An STM32F407G-DISC Rev E01. Other revisions and just the STM32F407VGT6 chip should work, however, the program is not tested on those.
+### Important Materials
+* An STM32F407G-DISC Rev E01. Other revisions of the board should also work. Also the STM32F407VGT6 chip should work on any proper, however, the program is not tested on those.
 * An I2S output microphone. I am using the SPH0645LM4H adafruit mic.
 * USB A to USB Mini A
 * WS2812B LED light strip
@@ -20,5 +20,5 @@ The goal of this project is to use the 2023 Beat Detector algorithm on an LED st
     * **DATA**: Connect `DOUT` on mic to `PC12` on the chip/board
     * **3V**: Connect `3V` on mic to `3V` on the chip/board
     * **GND**: Connect `GND` on mic to `GND` on the chip/board
-* Now, connect the USB A to USB micro A to the board from your computer with the repository. Using the STM32CubeMX software run/flash the firmware onto the board
+* Now, connect the USB A to USB mini A to the board from your computer with the repository. Using the STM32CubeMX software run/flash the firmware onto the board
 * Finally, play music and enjoy the beat detector :).
