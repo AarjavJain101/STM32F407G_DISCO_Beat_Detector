@@ -18,29 +18,26 @@
 #ifndef _PWM_HPP_
 #define _PWM_HPP_
 
-#include "CONSTANTS.hpp"
-#include <stdint.h>
-#include <stdbool.h>
+#include "main.hpp"
 
-
-
-/* =================== TIMING/WIDTH CONSTANTS =================== */
-
-#define PWM_PERIOD_COUNT              210
-#define PWM_T1H_WS2812B               134
-#define PWM_T0H_WS2812B               67
-#define PWM_RESET_WS2812B             0
-
-#define BITS_PER_LED                  8
-#define BITS_PER_PIXEL                BITS_PER_LED * LEDS_PER_PIXEL
-#define BITS_FOR_RESET                50            // requires > 50us of low signal to reset. 50 * 1.25 = 62.5us > 50us 
+/* ============================ PROTOTYPES ============================ */
+static struct {
+    uint8_t red = 0, green = 0, blue = 0;
+    float decayRate = 0.0;
+    uint8_t redrawHihatCounter = 0; 
+} state;
 
 
 /* =================== PUBLIC FUNCTIONS DECLARATIONS =================== */
+
+/* PERSONAL FUNCTIONS */
 uint16_t* PWM_set_pwm_all_pixels(uint8_t pixel_strip[NUM_PIXELS][LEDS_PER_PIXEL]);
 void _set_reset_bits_pwm();
 void PWM_set_pwm_one_pixel(uint16_t pixel_idx, uint32_t rgb_val, uint8_t num_bits);
 void _set_value_as_pwm(uint32_t pwm_data_idx, uint32_t value, uint8_t num_bits);
+
+/* CALLBACKS */
+void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef* htim);
 
 
 #endif /* _PWM_HPP_ */

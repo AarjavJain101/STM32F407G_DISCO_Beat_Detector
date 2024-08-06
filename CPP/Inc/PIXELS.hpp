@@ -21,10 +21,8 @@
 #ifndef _PIXELS_HPP_
 #define _PIXELS_HPP_
 
-#include "PWM.hpp"
-#include "CONSTANTS.hpp"
 #include <stdint.h>
-#include <stdbool.h>
+#include "CONSTANTS.hpp"
 
 
 /*  ============== LED AND PIXEL STRIP CONSTANTS ============== */
@@ -44,9 +42,6 @@ void PIXELS_set_pixels(uint16_t start_pixel_idx, uint16_t end_pixel_idx, uint8_t
                                                                              uint8_t blue
 );
 uint16_t* PIXELS_send_pixels();
-void _set_pixel(uint16_t pixel_idx, uint8_t red, 
-                                    uint8_t green, 
-                                    uint8_t blue
-);
+uint16_t* PIXELS_sound_react();
 
 #endif /* _PIXELS_HPP_ */

@@ -48,9 +48,6 @@ extern "C" {
 
 /* Exported macro ------------------------------------------------------------*/
 /* USER CODE BEGIN EM */
-extern bool is_data_sent;
-extern int16_t data_i2s[100];
-extern volatile int16_t sample_i2s;
 extern TIM_HandleTypeDef htim1;
 extern I2S_HandleTypeDef hi2s3;
 /* USER CODE END EM */
@@ -133,7 +130,6 @@ void CppMain();
 #define MEMS_INT2_GPIO_Port GPIOE
 
 /* USER CODE BEGIN Private defines */
-
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

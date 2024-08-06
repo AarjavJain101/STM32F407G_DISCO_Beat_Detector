@@ -54,8 +54,6 @@ DMA_HandleTypeDef hdma_tim1_ch1;
 
 /* USER CODE BEGIN PV */
 
-int16_t data_i2s[100];
-volatile int16_t sample_i2s = 0;
 
 /* USER CODE END PV */
 
@@ -75,21 +73,6 @@ void MX_USB_HOST_Process(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
-bool is_data_sent = false;
-
-/**
- * @brief Overriden callback function for when PWM pulse is finished
- * @param htim: The timer handle
- */
-void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef* htim) 
-{
-    if (htim->Instance == TIM1) 
-    {
-        HAL_TIM_PWM_Stop_DMA(htim, TIM_CHANNEL_1);
-        is_data_sent = true;
-    }
-}
 
 
 /* USER CODE END 0 */
@@ -246,7 +229,7 @@ static void MX_I2S3_Init(void)
   hi2s3.Init.Standard = I2S_STANDARD_PHILIPS;
   hi2s3.Init.DataFormat = I2S_DATAFORMAT_16B_EXTENDED;
   hi2s3.Init.MCLKOutput = I2S_MCLKOUTPUT_DISABLE;
-  hi2s3.Init.AudioFreq = I2S_AUDIOFREQ_48K;
+  hi2s3.Init.AudioFreq = I2S_AUDIOFREQ_96K;
   hi2s3.Init.CPOL = I2S_CPOL_LOW;
   hi2s3.Init.ClockSource = I2S_CLOCK_PLL;
   hi2s3.Init.FullDuplexMode = I2S_FULLDUPLEXMODE_DISABLE;
@@ -490,22 +473,28 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-int _write(int file, char *ptr, int len)
-{
-  (void)file;
-  int DataIdx;
+// int _write(int file, char *ptr, int len)
+// {
+//   (void)file;
+//   int DataIdx;
 
-  for (DataIdx = 0; DataIdx < len; DataIdx++)
-  {
-    ITM_SendChar(*ptr++);
-  }
-  return len;
-}
+//   for (DataIdx = 0; DataIdx < len; DataIdx++)
+//   {
+//     ITM_SendChar(*ptr++);
+//   }
+//   return len;
+// }
 
-void HAL_I2S_RxCpltCallback(I2S_HandleTypeDef *hi2s)
-{
-  sample_i2s = data_i2s[0];
-}
+// void HAL_I2S_RxHalfCpltCallback(I2S_HandleTypeDef *hi2s)
+// {
+//   isI2SBufferHalfDone = true;
+// }
+
+// void HAL_I2S_RxCpltCallback(I2S_HandleTypeDef *hi2s)
+// {
+//   isI2SBufferDone = true;
+//   sample_i2s = data_i2s[0];
+// }
 
 /* USER CODE END 4 */
 
