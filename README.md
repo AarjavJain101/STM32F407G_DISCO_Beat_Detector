@@ -11,10 +11,14 @@ The goal of this project is to use the 2023 Beat Detector algorithm on an LED st
 
 ### Set-Up
 * First clone the repository.
-* Connect the USB cable from device to board and flash the program onto the board.
-* Unplug the USB cable from the board now.
-* Then connect the 5V and GND pins on the board to the red and white lines respectively on the WS2812B LED strip (this assumes you are using BTF lighting's model. If not refer to the LED strip data sheet for the correct power lines).
-* Connect pin `PE9` to green line on the LED strip (this is PWM out pin).
+* Next connect the LED strip to the board as follows:
+    * 5V and GND pins on the board to the red and white lines respectively on the WS2812B LED strip (this assumes you are using BTF lighting's model. If not refer to the LED strip data sheet for the correct power lines).
+    * Connect pin `PE9` to green line on the LED strip (this is PWM out pin).
 * Now to connect the SPH0645LM4H mic make the following connections
-    * 
-* Now, power the board either with the adjustable power supply or with the USB cable again and the LED strip is now sound reactive!
+    * **WS**: Connect `LRCL` on mic to `PA4` on the chip/board
+    * **CLK**: Connect `BCLK` on mic to `PC10` on the chip/board
+    * **DATA**: Connect `DOUT` on mic to `PC12` on the chip/board
+    * **3V**: Connect `3V` on mic to `3V` on the chip/board
+    * **GND**: Connect `GND` on mic to `GND` on the chip/board
+* Now, connect the USB A to USB micro A to the board from your computer with the repository. Using the STM32CubeMX software run/flash the firmware onto the board
+* Finally, play music and enjoy the beat detector :).
