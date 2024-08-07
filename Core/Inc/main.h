@@ -50,6 +50,7 @@ extern "C" {
 /* USER CODE BEGIN EM */
 extern TIM_HandleTypeDef htim1;
 extern I2S_HandleTypeDef hi2s3;
+extern UART_HandleTypeDef huart2;
 /* USER CODE END EM */
 
 void HAL_TIM_MspPostInit(TIM_HandleTypeDef *htim);
