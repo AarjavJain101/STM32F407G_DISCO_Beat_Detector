@@ -24,19 +24,19 @@ void CppMain()
 	HAL_I2S_Receive_DMA(&hi2s3, (uint16_t*) raw_audio_buffer, sizeof(raw_audio_buffer) / sizeof(raw_audio_buffer[0]));
 
   // Initiliaze FFT and variables for detection
-  DETECTOR_init();
+  // DETECTOR_init();
 
 
-  uint16_t* pwm_data = PIXELS_color_pixels(0, 10, 255, 255, 255);
+  // uint16_t* pwm_data = PIXELS_color_pixels(0, 10, 255, 255, 255);
 	while (1) {   
     if (isI2SBufferHalfDone)                                  // Audio buffer is 4096 but I do half at a time to avoid overwriting
     {
-          uint32_t start = HAL_GetTick();
+          // uint32_t start = HAL_GetTick();
           HAL_UART_Transmit_DMA(&huart2, (uint8_t*)(&raw_audio_buffer[START_OF_FIRST_HALF]), sizeof(raw_audio_buffer) / 2); 
           while (!UART_sent){};
           UART_sent = false;
-          uint32_t end = HAL_GetTick();
-          uint32_t time = end - start;
+          // uint32_t end = HAL_GetTick();
+          // uint32_t time = end - start;
 
           // DETECTOR_perform_detection(&raw_audio_buffer[START_OF_FIRST_H  ALF]);  
           // pwm_data = PIXELS_sound_react();
@@ -44,11 +44,11 @@ void CppMain()
     } 
     else if (isI2SBufferDone) 
     {
-          uint32_t start = HAL_GetTick();
+          // uint32_t start = HAL_GetTick();
           HAL_UART_Transmit_DMA(&huart2, (uint8_t*)(&raw_audio_buffer[START_OF_SECOND_HALF]), sizeof(raw_audio_buffer) / 2); 
           while (!UART_sent){};
           UART_sent = false;
-          uint32_t end = HAL_GetTick();
+          // uint32_t end = HAL_GetTick();
 
           // DETECTOR_perform_detection(&raw_audio_buffer[START_OF_SECOND_HALF]);
           // pwm_data = PIXELS_sound_react();
