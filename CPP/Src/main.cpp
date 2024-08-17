@@ -16,6 +16,7 @@ volatile int16_t sample_i2s = 0;
 volatile bool isI2SBufferHalfDone = false;
 volatile bool isI2SBufferDone = false;
 bool UART_sent = false;
+uint32_t time_DMA_i2s = 0;
 
 
 void CppMain()
@@ -28,31 +29,43 @@ void CppMain()
 
 
   // uint16_t* pwm_data = PIXELS_color_pixels(0, 10, 255, 255, 255);
+  uint32_t timer = HAL_GetTick();
+  uint32_t time_DMA_i2s = 0;
+  uint32_t curr_time = 0;
+  uint32_t time = 0;
+  uint32_t onButton = 0;
 	while (1) {   
+
     if (isI2SBufferHalfDone)                                  // Audio buffer is 4096 but I do half at a time to avoid overwriting
     {
+          // curr_time = HAL_GetTick();
+          // time_DMA_i2s = curr_time - timer;
+          // timer = HAL_GetTick();
           // uint32_t start = HAL_GetTick();
-          HAL_UART_Transmit_DMA(&huart2, (uint8_t*)(&raw_audio_buffer[START_OF_FIRST_HALF]), sizeof(raw_audio_buffer) / 2); 
-          while (!UART_sent){};
-          UART_sent = false;
+          // HAL_UART_Transmit_DMA(&huart2, (uint8_t*)(&raw_audio_buffer[START_OF_FIRST_HALF]), sizeof(raw_audio_buffer) / 2); 
+          // while (!UART_sent){};
+          // UART_sent = false;
           // uint32_t end = HAL_GetTick();
-          // uint32_t time = end - start;
+          // time = end - start;
+          onButton = 1;
 
           // DETECTOR_perform_detection(&raw_audio_buffer[START_OF_FIRST_H  ALF]);  
           // pwm_data = PIXELS_sound_react();
-          // isI2SBufferHalfDone = false;                                            // Reset flag
+          isI2SBufferHalfDone = false;                                            // Reset flag
     } 
     else if (isI2SBufferDone) 
     {
-          // uint32_t start = HAL_GetTick();
-          HAL_UART_Transmit_DMA(&huart2, (uint8_t*)(&raw_audio_buffer[START_OF_SECOND_HALF]), sizeof(raw_audio_buffer) / 2); 
-          while (!UART_sent){};
-          UART_sent = false;
-          // uint32_t end = HAL_GetTick();
+          uint32_t start = HAL_GetTick();
+          HAL_UART_Transmit_DMA(&huart2, (uint8_t*)(&raw_audio_buffer[START_OF_FIRST_HALF]), sizeof(raw_audio_buffer)); 
+          // while (!UART_sent){};
+          // UART_sent = false;
+          uint32_t end = HAL_GetTick();
+          time = end - start;
 
           // DETECTOR_perform_detection(&raw_audio_buffer[START_OF_SECOND_HALF]);
           // pwm_data = PIXELS_sound_react();
-          // isI2SBufferDone = false;                                                // Reset flag
+          isI2SBufferDone = false;                                                // Reset flag
+          onButton = 0;
     }
 
     // HAL_TIM_PWM_Start_DMA(&htim1, TIM_CHANNEL_1, (uint32_t *)pwm_data, BITS_PER_PIXEL * NUM_PIXELS + BITS_FOR_RESET);

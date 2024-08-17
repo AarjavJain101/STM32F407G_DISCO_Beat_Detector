@@ -153,7 +153,7 @@ uint16_t* PIXELS_sound_react()
     if (beat_actions.do_bass) {            // Bass only = red
         state.red = 0;
         state.green = 0;
-        state.blue = 180;
+        state.blue = 50;
 
         state.decayRate = 0.4;
         state.redrawHihatCounter = 6;
@@ -169,8 +169,8 @@ uint16_t* PIXELS_sound_react()
     }
 
     if (beat_actions.do_bass && beat_actions.do_clap) {        // Bass and clap = orange
-        state.red = 180;
-        state.green = 50;
+        state.red = 50;
+        state.green = 17;
         state.blue = 0;
 
         state.decayRate = 0.4;
@@ -182,8 +182,8 @@ uint16_t* PIXELS_sound_react()
     }
 
     if (!beat_actions.do_bass && beat_actions.do_clap) {       // Clap only = yellow
-        state.red = 150;
-        state.green = 150;
+        state.red = 50;
+        state.green = 50;
         state.blue = 0;
 
         state.decayRate = 0.37;
@@ -195,7 +195,7 @@ uint16_t* PIXELS_sound_react()
     }
     
     if (beat_actions.do_hihat && !beat_actions.do_bass && !beat_actions.do_clap && state.redrawHihatCounter == 0) {                               // Hihat only = dark blue
-        state.red = 180;
+        state.red = 30;
         state.green = 0;
         state.blue = 0;
 
@@ -208,7 +208,7 @@ uint16_t* PIXELS_sound_react()
         PIXELS_dim_pixels_beat(HIHAT_START_IDX, NUM_PIXELS, 0.2);
     }
 
-    PIXELS_set_pixels_min(0, NUM_PIXELS, 0, 1, 0);
+    PIXELS_set_pixels_min(0, NUM_PIXELS, 1, 0, 1);
     return PIXELS_send_pixels();
 }
 
